@@ -7,7 +7,8 @@ num6=0
 
 for ((i=0; i<$len; i++))
 do
-if [ ${num:i:1} == 2 ]
+# if [ ${num:i:1} == 2 ]
+if [ $num[$i] == 2 ]
 then
 (( num2++ ))
 fi
