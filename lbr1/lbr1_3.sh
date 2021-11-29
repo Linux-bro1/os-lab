@@ -1,6 +1,6 @@
 #!/bin/bash
 
-<<comment 
+<<comment
 
     Title: Lab Report 1 (problem 3)
     Description: Write a Shell program to find the prime numbers from a set of numbers and
@@ -16,33 +16,31 @@ sumofprime=0
 
 while [ $i -lt $num ]
 do
-read arr[i]
-((i++))
+    read arr[i]
+    ((i++))
 done
 
 j=0
 p=0
 while (( $j < $num ))
 do
-pr=1
-for ((i=2; i<=${arr[j]}/2; i++))
-do
-
-  if [ $((${arr[j]}%i)) -eq 0 ]
-  then
-    # echo "${arr[j]} is not a prime number."
-    pr=0
-    break
-  fi
-done
-if [ $pr -eq 1 ]
-then
-prime[p]=${arr[j]}
-# echo "${arr[j]} is a prime number."
-((sumofprime+=${arr[j]}))
-((p++))
-fi
-((j++))
+    pr=1
+    for ((i=2; i<=${arr[j]}/2; i++))
+    do
+        
+        if [ $((${arr[j]}%i)) -eq 0 ]
+        then
+            pr=0
+            break
+        fi
+    done
+    if [ $pr -eq 1 ]
+    then
+        prime[p]=${arr[j]}
+        ((sumofprime+=${arr[j]}))
+        ((p++))
+    fi
+    ((j++))
 done
 
 echo "${prime[@]} these are prime numbers, Sum of all prime numbers: $sumofprime"
