@@ -1,30 +1,54 @@
 #!/bin/bash
-# read -p "Enter the number: " num
-# len=${#num}
-# largest=0
+<<comment
 
-# for ((i=0; i<$len; i++))
-# do
-# if [[ "$largest" < "${num:i:0}" ]]
-# then
-#  echo 'hi'
-# fi
-#  echo "hello `${num[$i]}`"
-# done
+    Title: Lab Report 1 (problem 4)
+    Description: Write a Shell program to find the 3 rd biggest digit from a number using While loop.
+    Author: Amanur Rahman
+    Date: 04/11/2021
 
-# echo $largest
-# echo $num
+comment
 
-# array=(1 2 3 4 5` 6 7)
+# Get number from user input
+read -p "Enter the number: " number
 
-read -p "Enter the number: " array
+# Number length
+len=${#number}
 
-min=0
-# max=$(( ${#array[@]} -1 ))
-max=${#array}
-echo $max
-while [[ min -lt max ]]
+# Let max equal zero
+max=0
+
+i=0
+# Get Most largest digit
+while [[ i -lt len ]]
 do
+    if [[ "$max" < "${number[@]:i:1}" ]]
+    then
+        max=${number[@]:i:1}
+    fi
+    ((i++))
+done
+
+
+max2=0      #let 2nd largest digit equal zero
+i=0         #intialize i equal zero
+
+# Get 2nd Most largest digit
+while [[ i -lt len ]]
+do
+    if [[ "$max2" < "${number[@]:i:1}" && "${number[@]:i:1}" < "$max" ]]
+    then
+        max2=${number[@]:i:1}
+    fi
+    ((i++))
+done
+
+max3=0      #let 2nd largest digit equal zero
+i=0         #intialize i equal zero
+
+# Get 3rd Most largest digit
+while [[ i -lt len ]]
+do
+
     # Swap current first and last elements
     x=${array[$min]}
     echo "Hi $x"
@@ -32,6 +56,13 @@ do
     array[$max]="$x"
     # Move closer
     (( min++, max-- ))
+
+    if [[ "$max3" < "${number[@]:i:1}" && "${number[@]:i:1}" < "$max2" ]]
+    then
+        max3=${number[@]:i:1}
+    fi
+    ((i++))
+
 done
 
-echo "${array[@]}"
+echo "The 3rd biggest digit from a number $max3"
