@@ -1,2 +1,2 @@
-https://devhints.io/bash
-https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh
+https://github.com/abhisheknaiidu/awesome-github-profile-readme#gifs-
+https://www.tutorialsandyou.com/bash-shell-scripting/prime-number-16.html
