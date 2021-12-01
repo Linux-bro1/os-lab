@@ -26,7 +26,7 @@ echo $max
 while [[ min -lt max ]]
 do
     # Swap current first and last elements
-    x="$array[$min]"
+    x=${array[$min]}
     echo "Hi $x"
     array[$min]="${array[$max]}"
     array[$max]="$x"
