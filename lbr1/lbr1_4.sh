@@ -48,7 +48,7 @@ i=0         #intialize i equal zero
 # Get 3rd Most largest digit
 while [[ i -lt len ]]
 do
-<<<<<<< HEAD
+
     # Swap current first and last elements
     x=${array[$min]}
     echo "Hi $x"
@@ -56,13 +56,13 @@ do
     array[$max]="$x"
     # Move closer
     (( min++, max-- ))
-=======
     if [[ "$max3" < "${number[@]:i:1}" && "${number[@]:i:1}" < "$max2" ]]
     then
         max3=${number[@]:i:1}
     fi
     ((i++))
->>>>>>> 37735bdf48145bcbaedb2ecb6971bbd6fa99be76
+    # my comment
+
 done
 
 echo "The 3rd biggest digit from a number $max3"
