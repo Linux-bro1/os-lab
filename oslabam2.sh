@@ -1,14 +1,13 @@
 #!/bin/bash
 read -p "Enter the number of Process: " process
 i=0
+
 while [ $i -lt $process ]
 do
-    
     read -p "Enter the brust time of P[$i]: " bt[i]
     ps[i]=$i
     ((i++))
 done
-
 
 for (( i=0; i<$process; i++))
 do
@@ -45,6 +44,11 @@ echo -e "\nProcess \t Brust Time \t Watting Time \t Turnarround Time"
 i=0
 while [ $i -lt $process ]
 do
+    totalwt=$((totalwt+wt[i]))
+    totaltat=$((totaltat+tat[i]))
     echo -e "  P${ps[i]} \t\t   ${bt[i]} \t\t   ${wt[i]} \t\t   ${tat[i]}"
     ((i++))
 done
+
+echo -e "Average waiting Time --->$totalwt $((totalwt/process))"
+echo -e "Average waiting Time --->$totaltat $((totaltat/process))"
