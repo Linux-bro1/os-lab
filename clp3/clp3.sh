@@ -5,7 +5,7 @@ i=0
 while [ $i -lt $process ]
 do
     ps[i]=$((i+1))
-    read -p "Enter the brust time & priority of process P[$i]: " bt[i] pri[i]
+    read -p "Enter the brust time & priority of process P[$((i+1))]: " bt[i] pri[i]
     ((i++))
 done
 
@@ -33,32 +33,6 @@ do
     done
 done
 
-echo -e "Process: ${ps[@]}\nBrust time: ${bt[@]} \nPriority: ${pri[@]}"
-
-
-for (( i=0; i<$process-1; i++))
-do
-    echo -e "${pri[i]} ${pri[i+1]}"
-    if [[ pri[i] -eq pri[i+1] && bt[i] -gt bt[i+1] ]]
-    then
-        echo "condition satisfied"
-        temp=${pri[i]}
-        pri[i]=${pri[i+1]}
-        pri[i+1]=$temp
-        
-        temp=${bt[i]}
-        bt[i]=${bt[i+1]}
-        bt[i+1]=$temp
-        
-        temp=${ps[i]}
-        ps[i]=${ps[i+1]}
-        ps[i+1]=$temp
-        
-        
-    fi
-done
-
-echo -e "Process: ${ps[@]}\nBrust time: ${bt[@]} \nPriority: ${pri[@]}"
 
 
 wt[0]=0
@@ -81,6 +55,3 @@ do
     echo -e "  P${ps[i]} \t\t    ${pri[i]}\t\t  ${bt[i]} \t\t ${wt[i]} \t\t   ${tat[i]}"
     ((i++))
 done
-
-echo -e "Average waiting Time ---> $((totalwt/process))"
-echo -e "Average Turnarround Time ---> $((totaltat/process))"
