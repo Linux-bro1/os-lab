@@ -57,7 +57,3 @@ do
     echo -e "\n$i\t\t${f[i]}\t\t${ff[i]}\t\t${bf[i]}\t\t${frag[i]}"
 done
 
-for k in "${!alpha[@]}"; do
-    printf "alpha[%s]=%s\n" "$k" "${alpha[$k]}"
-done
-

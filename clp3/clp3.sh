@@ -4,24 +4,30 @@ i=0
 
 while [ $i -lt $process ]
 do
-    read -p "Enter the brust time of P[$i]: " bt[i]
-    ps[i]=$i
+    ps[i]=$((i+1))
+    read -p "Enter the brust time & priority of process P[$((i+1))]: " bt[i] pri[i]
     ((i++))
 done
+
+echo -e "Brust time: ${bt[@]} \nPriority: ${pri[@]}"
 
 for (( i=0; i<$process; i++))
 do
     for (( j=i+1; j<$process; j++))
     do
-        if [[ bt[i] -gt bt[j] ]]
+        if [[ pri[i] -gt pri[j] ]]
         then
+            temp=${ps[i]}
+            ps[i]=${ps[j]}
+            ps[j]=$temp
+            
             temp=${bt[i]}
             bt[i]=${bt[j]}
             bt[j]=$temp
             
-            temp=${ps[i]}
-            ps[i]=${ps[j]}
-            ps[j]=$temp
+            temp=${pri[i]}
+            pri[i]=${pri[j]}
+            pri[j]=$temp
             
         fi
     done
@@ -40,15 +46,12 @@ do
 done
 
 
-echo -e "\nProcess \t Brust Time \t Watting Time \t Turnarround Time"
+echo -e "\nProcess \tPriority \t Brust Time \t Watting Time \t Turnarround Time"
 i=0
 while [ $i -lt $process ]
 do
     totalwt=$((totalwt+wt[i]))
     totaltat=$((totaltat+tat[i]))
-    echo -e "  P${ps[i]} \t\t   ${bt[i]} \t\t   ${wt[i]} \t\t   ${tat[i]}"
+    echo -e "  P${ps[i]} \t\t    ${pri[i]}\t\t  ${bt[i]} \t\t ${wt[i]} \t\t   ${tat[i]}"
     ((i++))
 done
-
-echo -e "Average waiting Time --->$totalwt $((totalwt/process))"
-echo -e "Average waiting Time --->$totaltat $((totaltat/process))"
